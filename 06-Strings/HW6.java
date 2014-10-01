@@ -1,4 +1,8 @@
 public class HW6 {
+    /*
+      Took 5 minutes, then I ran into the cannot find front
+      variable problem 
+    */
     public String frontTimes(String str, int n) {
 	String front;
 	if (str.length() < 3) {
@@ -15,6 +19,7 @@ public class HW6 {
 	return retstr;
     }
 
+    //8 minutes.
     public String stringBits(String str) {
 	int len = str.length();
 	int num = 0;
@@ -32,6 +37,7 @@ public class HW6 {
 	return retstr;
     }
 
+    //5 Minutes.
     public String stringYak(String str) {
 	int num = 0;
 	while (((str.length() - 1) - num) >= 2) {
@@ -43,6 +49,7 @@ public class HW6 {
 	return str;
     }
 
+    //10 Minutes.
     public int stringMatch(String a, String b) {
 	int mark = 0;
 	int num = 0;
