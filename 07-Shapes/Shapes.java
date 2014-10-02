@@ -1,4 +1,20 @@
-public class tri2{
+public class Shapes {
+    public String Tri1(int a) {
+	int rows = 1;
+	int stars;
+	String retstr = "";
+	while (rows <= a) {
+	    stars = rows;
+	    while (stars > 0) {
+		retstr = retstr + "*";
+		stars = stars - 1;
+	    }
+	    retstr = retstr + "\n";
+	    rows = rows + 1;
+	}
+	return retstr;
+    }
+
     public String Tri2 (int a) {
 	int row = 1;
 	int stars;
