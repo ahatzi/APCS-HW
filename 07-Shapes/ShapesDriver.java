@@ -10,5 +10,11 @@ public class ShapesDriver {
 
 	System.out.println(a.Tri3(4));
         System.out.println(a.Tri3(6));
+
+	System.out.println(a.Diamond(5));
+	System.out.println(a.Diamond(3));
+
+	System.out.println(a.Tri4(5));
+	System.out.println(a.Tri4(3));
     }
 }

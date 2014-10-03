@@ -60,4 +60,71 @@ public class Shapes {
 	}
 	return retstr;
     }
+    
+    public String Diamond (int h) {
+        int counter;
+	int spaces = (h - 1)/2;
+	int b;
+	int stars = 1;
+	int d;
+	int e = (h + 1)/2;
+	String retstr = "";
+	for (counter = h;counter >= e;counter = counter - 1) {
+	    b = spaces;
+	    while (b > 0) {
+		retstr = retstr + " ";
+		b = b - 1;
+	    }
+	    d = stars;
+	    while (d > 0) {
+		retstr = retstr + "*";
+		d = d - 1;
+	    }
+	    if (counter > e){
+		retstr = retstr + "\n";
+	    }
+	    spaces = spaces - 1;
+	    stars = stars + 2;
+	}
+	retstr = retstr + "\n";
+	spaces = 1;
+	stars = h - 2;
+	for (counter = h;counter > e;counter = counter - 1) {
+	    b = spaces;
+	    while (b > 0) {
+		retstr = retstr + " ";
+		b = b - 1;
+	    }
+	    d = stars;
+	    while (d > 0) {
+		retstr = retstr + "*";
+		d = d - 1;
+	    }
+	    retstr = retstr + "\n";
+	    spaces = spaces + 1;
+	    stars = stars - 2;
+	}
+	return retstr;
+    }
+
+    public String Tri4(int h) {
+	String retstr = "";
+	int count;
+	int a;
+	int b;
+	for (count = h;count > 0;count = count - 1) {
+	    b = h - count;
+	    while (b > 0) {
+		retstr = retstr + " ";
+		b = b - 1;
+	    }
+	    a = count;
+	    while (a > 0) {
+		retstr = retstr + "*";
+		a = a - 1;
+	    }
+	    retstr = retstr + "\n";
+	}
+	return retstr;
+    }
 }
