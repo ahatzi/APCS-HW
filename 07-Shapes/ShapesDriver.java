@@ -16,5 +16,8 @@ public class ShapesDriver {
 
 	System.out.println(a.Tri4(5));
 	System.out.println(a.Tri4(3));
+
+	System.out.println(a.frame(5,4));
+	System.out.println(a.frame(3,5));
     }
 }

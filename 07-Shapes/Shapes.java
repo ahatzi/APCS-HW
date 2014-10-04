@@ -127,4 +127,27 @@ public class Shapes {
 	}
 	return retstr;
     }
+
+    public String frame(int r, int c) {
+	String retstr = "";
+	for (int firstRow = c;firstRow > 0;firstRow = firstRow - 1) {
+	    retstr = retstr + "*";
+	}
+	for (int MiddleRows = ((r-2)*2)+1;MiddleRows>0;MiddleRows = MiddleRows - 1){
+	    if ((MiddleRows % 2) == 1) {
+		retstr = retstr + "\n";
+	    }
+	    else {
+		retstr = retstr + "*";
+		for (int spaces = (c - 2);spaces > 0; spaces = spaces - 1) {
+		    retstr = retstr + " ";
+		}
+		retstr = retstr + "*";
+	    }
+	}
+	for (int lastRow = c;lastRow > 0;lastRow = lastRow - 1) {
+	    retstr = retstr + "*";
+	}
+	return retstr;
+    }
 }
