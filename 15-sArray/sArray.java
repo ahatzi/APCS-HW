@@ -25,34 +25,46 @@ public class sArray{
     }
 
     public void add(int index,int i){ //add to location index; shift everything else down
-	if (items = data.length){
-	    int[] newdata = new int[data.length+1];
-	    for (int a = 0;a<index;a++){
-		newdata[a]=data[a];
+	try{
+	    if (items = data.length){
+		int[] newdata = new int[data.length+1];
+		for (int a = 0;a<index;a++){
+		    newdata[a]=data[a];
+		}
+		newdata[index]=i;
+		for (int a = index+1;a<newdata.length;a++){
+		    newdata[a]=data[a-1];
+		}
+		data=newdata;
 	    }
-	    newdata[index]=i;
-	    for (int a = index+1;a<newdata.length;a++){
-		newdata[a]=data[a-1];
+	    else{
+		for (int a = items;a>index;a--){
+		    data[a] = data[a-1];
+		}
+		data[index]=i;
 	    }
-	    data=newdata;
+	    items++
+	}catch (Exception e){
+	    System.out.println("Error: " + e);
 	}
-	else{
-	    for (int a = items;a>index;a--){
-		data[a] = data[a-1];
-	    }
-	    data[index]=i;
-	}
-	items++;
     }
 
     public int get(int index){
-	return data[index];
+	try{
+	    return data[index];
+	}catch (IndexOutOfBoundsException e){
+	    System.out.println("Error: " + e); 
+	}
     }
 
     public int set(int index,int i){
-	int a = data[index];
-	data[index]=i;
-	return a;
+	try{
+	    int a = data[index];
+	    data[index]=i;
+	    return a;
+	}catch (IndexOutOfBoundsException e){
+	    System.out.println("Error: " + e);
+	}
     }
 
     public int size(){
@@ -60,8 +72,12 @@ public class sArray{
     }
 
     public int remove(int index){
-	int a = data[index];
-	data[index]=0;
-	return a;
+	try{
+	    int a = data[index];
+	    data[index]=0;
+	    return a;
+	}catch (IndexOutOfBoundsException e){
+	    System.out.println("Error: " + e);
+	}
     }
 }
