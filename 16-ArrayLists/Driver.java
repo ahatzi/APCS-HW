@@ -1,23 +1,22 @@
 import java.io.*;
 import java.util.*;
 public class Driver{
-
-    public ArrayList<Integer> removeDuplicates(ArrayList<Integer> a){
-	for (int i=0;i<a.size();i++){
-	    if (a.get(i+1) == a.get(i)){
-		a.remove(i+1);
-		i--;
-	    }
-	}
-	return a;
-    }
-
+    
     public static void main (String[] args){
 	Random r = new Random();
 	ArrayList<Integer> b = new ArrayList<Integer>();
 	for (int i = 0;i<20;i++){
-	    b.add(r.nextInt(10));
+	    b.add(r.nextInt(5));
 	}
-	System.out.println(removeDuplicates(b));
+	System.out.println(b);
+
+	for (int i=0;i<b.size()-1;i++){
+	    if (b.get(i+1) == b.get(i)){
+		b.remove(i+1);
+		i--;
+	    }
+	}
+        System.out.println(b);
     }
+
 }
