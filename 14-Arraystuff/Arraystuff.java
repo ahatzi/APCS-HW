@@ -138,25 +138,47 @@ public class Arraystuff {
 
     public int freq(int i) {
 	int num = a[i];
-	int retnum = 0;
-	for (int i = 0;i<a.length;i++) {
-	    if (a[i] == num) {
+	for (int b = 0;b<a.length;b++) {
+	    if (a[b] == num) {
 		num++;
 	    }
 	}
+	return num;
+    }
+
+    public int mode(int[] A) {
+	int[] buckets = new int[A.length];
+	for (int b = 0;b<A.length;b++) {
+	    buckets[A[b]]++;
+	}
+	int biggest = buckets[0];
+	for (int b=0;b<buckets.length;b++) {
+	    if (buckets[b] > biggest) {
+		biggest = buckets[b];
+	    }
+	}
+	retnum = 0;
+	for (int b = 0;b<buckets.length;b++) {
+	    if (buckets[b] == biggest) {
+		retnum = b;
+	    }
+	}
+	return retnum;
     }
     /*-----------------Test----------------------*/
     public static void main(String[] args) {
 	Arraystuff as = new Arraystuff();
-	System.out.println(as);
-	System.out.println(as.find(1));
-	System.out.println(as.maxVal());
-	System.out.println(as.sum67(a));
-	System.out.println(as.tenRun(a));
-	System.out.println(as.more14(a));
-	System.out.println(as.tripleUp(a));
-	System.out.println(as.canBalance(a));
-	System.out.println(as.seriesUp(5));
-	System.out.println(as.freq(2));
+	//System.out.println(as);
+	//System.out.println(as.find(1));
+	//System.out.println(as.maxVal());
+	//System.out.println(as.sum67({1,2,3,6,5,4,7,3}));
+	//System.out.println(as.tenRun({));
+	//System.out.println(as.more14(a));
+	//System.out.println(as.tripleUp(a));
+	//System.out.println(as.canBalance(a));
+	//System.out.println(as.seriesUp(5));
+	//System.out.println(as.freq(2));
+	int[] hi = {1,2,3,4,4,4,5,1,2};
+	System.out.println(as.mode(hi));
     }
 }
