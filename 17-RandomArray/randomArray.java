@@ -54,4 +54,14 @@ public class randomArray{
 	}
 	return al2;
     }
+
+    public ArrayList<Integer> change2(){
+	Random rnd = new Random();
+	for (int i=al.size();i>0;i--){
+	    int a = rnd.nextInt(i);
+	    al.set(i-1,al.get(a));
+	    al.set(a,al.get(i-1));
+	}
+	return al;
+    }
 }
