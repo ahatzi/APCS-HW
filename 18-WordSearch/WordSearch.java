@@ -53,7 +53,6 @@ public class WordSearch{
 	 if ((c + w.length()) > board[1].length){
 	     c = c - ((c + w.length()) - board[1].length);
 	 }
-	 System.out.println(c);
 	 for (int i=0;i<w.length();i++){
 	     if (board[r][c]!='.'){
 		 if (board.length >= r+1){
@@ -75,12 +74,12 @@ public class WordSearch{
 	System.out.println(w);
 	w.addWordHforward("howdy",1,6); //overlaps with hello but moves down a row
 	System.out.println(w);
-	w.addWordHforward("alligator",4,30); //goes off the board but moves back
+	w.addWordHforward("alligator",4,22); //goes off the board but moves back
 	System.out.println(w);
 	
         w.addWordHbackward("computer",1,19); //adds word normally backward
 	System.out.println(w);
-	w.addWordHbackward("lemon",18,19); //goes off the side of the board
+	w.addWordHbackward("lemon",18,27); //goes off the side of the board
 	System.out.println(w);
 	//w.addWordHforward("alligator",4,30); //goes off the board but moves back
 	//System.out.println(w);
