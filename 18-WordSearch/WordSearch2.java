@@ -2,10 +2,10 @@
  * Creates a word search puzzle
  *
  */
-public class WordSearch{
+public class WordSearch2{
     private char[][] board;
 
-    public WordSearch(int r, int c){
+    public WordSearch2(int r, int c){
 	board = new char[r][c];
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
@@ -14,7 +14,7 @@ public class WordSearch{
 	}
     }
 
-    public WordSearch(){
+    public WordSearch2(){
 	this(20,30);
     }
 
@@ -28,7 +28,7 @@ public class WordSearch{
 	}
 	return s;
     }
-
+    /*
     public void addWordHforward (String w,int row,int col){
 	int r=row, c=col;
 	if ((c + w.length()) > board[1].length){
@@ -36,9 +36,14 @@ public class WordSearch{
 	}
 	for (int i=0;i<w.length();i++){
 	    if (board[r][c]!='.'){
-		if (board.length >= r+1){
-		    r++;
+		if (board[r][c+1] != '.'){
+		    throw 
+		}
+		else if (board[r][c] == w.charAt(i)){
 		    break;
+		}
+		else{
+		    throw 
 		}
 	    }
 	}
@@ -47,6 +52,7 @@ public class WordSearch{
 	    c++;
 	}
     }
+    */
 
      public void addWordHbackward (String w,int row,int col){
 	 int r=row, c=col;
@@ -105,9 +111,57 @@ public class WordSearch{
 	}
     }
 
-    public static void main(String[] args){
-	WordSearch w = new WordSearch();
+    public void addWordforDown(String w, int row, int col){
+	int r=row, c = col;
+	for (int i=0;i<w.length();i++){
+	    if (board[r][c] != '.'){
+		if (board[r][c] != w.charAt(i)){
+		    throw new IndexOutOfBoundsException();
+		}
+	    }
+	    r++;
+	    c++;
+	}
+	for (int i =0;i<w.length();i++){
+	    board[r][c]= w.charAt(i);
+	    r++;
+	    c++;
+	}
+    }
+    
+    public void addWordforUp(String w, int row, int col){
+	int r=row, c = col;
+	for (int i =0;i<w.length();i++){
+	    board[r][c]= w.charAt(i);
+	    r--;
+	    c++;
+	}
+    }
 
+    public void addWordBackDown(String w, int row, int col){
+	int r=row, c = col;
+	for (int i =w.length() -1;i>= 0;i--){
+	    board[r][c]= w.charAt(i);
+	    r++;
+	    c++;
+	}
+    }
+    
+    public void addWordBackUp(String w, int row, int col){
+	int r=row, c = col;
+	for (int i =w.length() -1;i>= 0;i--){
+	    board[r][c]= w.charAt(i);
+	    r--;
+	    c++;
+	}
+    }
+    
+   
+    public static void main(String[] args){
+	WordSearch2 w = new WordSearch2();
+	w.addWordforDown("banana",8,6);
+	System.out.println(w);
+	/*
 	//System.out.println(w);
         w.addWordHforward("hello",1,3); //adds word normally
 	//System.out.println(w);
@@ -132,6 +186,6 @@ public class WordSearch{
 	w.addWordVup("donkey",4,27); //adds word overlapped
 	w.addWordVup("door",19,12); //adds word but goes off edge
 	System.out.println(w);
-
+	*/
     }
 }
