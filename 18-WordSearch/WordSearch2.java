@@ -1,3 +1,4 @@
+
 /**
  * Creates a word search puzzle
  *
@@ -28,7 +29,7 @@ public class WordSearch2{
 	}
 	return s;
     }
-    /*
+
     public void addWordHforward (String w,int row,int col){
 	int r=row, c=col;
 	if ((c + w.length()) > board[1].length){
@@ -36,23 +37,15 @@ public class WordSearch2{
 	}
 	for (int i=0;i<w.length();i++){
 	    if (board[r][c]!='.'){
-		if (board[r][c+1] != '.'){
-		    throw 
-		}
-		else if (board[r][c] == w.charAt(i)){
-		    break;
-		}
-		else{
-		    throw 
-		}
+		throw new OutOfBoundsException();
 	    }
+	    c++;
 	}
 	for (int i=0;i<w.length();i++){
 	    board[r][c] = w.charAt(i);
 	    c++;
 	}
     }
-    */
 
      public void addWordHbackward (String w,int row,int col){
 	 int r=row, c=col;
@@ -61,11 +54,9 @@ public class WordSearch2{
 	 }
 	 for (int i=0;i<w.length();i++){
 	     if (board[r][c]!='.'){
-		 if (board.length >= r+1){
-		     r++;
-		     break;
-		 }
+		 throw new OutOfBoundsException();
 	     }
+	     c--;
 	 }
 	 for (int i=w.length()-1;i>=0;i--){
 	     board[r][c] = w.charAt(i);
@@ -80,11 +71,9 @@ public class WordSearch2{
 	}
 	for (int i=0;i<w.length();i++){
 	    if (board[r][c] != '.'){
-		if (board[1].length >= c+1){
-		    r++;
-		    break;
-		}
+		throw new OutOfBoundsException();
 	    }
+	    r++;
 	}
 	for (int i=0;i<w.length();i++){
 	    board[r][c]=w.charAt(i);
@@ -99,11 +88,9 @@ public class WordSearch2{
 	}
 	for (int i=0;i<w.length();i++){
 	    if (board[r][c] != '.'){
-		if (board[1].length >= c+1){
-		    r++;
-		    break;
-		}
+		throw new OutOfBoundsException();
 	    }
+	    r--;
 	}
 	for (int i=w.length()-1;i>=0;i--){
 	    board[r][c]=w.charAt(i);
@@ -111,16 +98,14 @@ public class WordSearch2{
 	}
     }
 
-    public void addWordforDown(String w, int row, int col){
+    public void addWordForDown(String w, int row, int col){
 	int r=row, c = col;
 	for (int i=0;i<w.length();i++){
 	    if (board[r][c] != '.'){
-		if (board[r][c] != w.charAt(i)){
-		    throw new IndexOutOfBoundsException();
-		}
+		throw new OutOfBoundsException();
 	    }
-	    r++;
 	    c++;
+	    r++;
 	}
 	for (int i =0;i<w.length();i++){
 	    board[r][c]= w.charAt(i);
@@ -129,8 +114,15 @@ public class WordSearch2{
 	}
     }
     
-    public void addWordforUp(String w, int row, int col){
+    public void addWordForUp(String w, int row, int col){
 	int r=row, c = col;
+	for (int i=0;i<w.length();i++){
+	    if (board[r][c] != '.'){
+		throw new OutOfBoundsException();
+	    }
+	    c++;
+	    r--;
+	}
 	for (int i =0;i<w.length();i++){
 	    board[r][c]= w.charAt(i);
 	    r--;
@@ -140,6 +132,13 @@ public class WordSearch2{
 
     public void addWordBackDown(String w, int row, int col){
 	int r=row, c = col;
+	for (int i=0;i<w.length();i++){
+	    if (board[r][c] != '.'){
+		throw new OutOfBoundsException();
+	    }
+	    c--;
+	    r++;
+	}
 	for (int i =w.length() -1;i>= 0;i--){
 	    board[r][c]= w.charAt(i);
 	    r++;
@@ -149,10 +148,54 @@ public class WordSearch2{
     
     public void addWordBackUp(String w, int row, int col){
 	int r=row, c = col;
+	for (int i=0;i<w.length();i++){
+	    if (board[r][c] != '.'){
+		throw new OutOfBoundsException();
+	    }
+	    c--;
+	    r--;
+	}
 	for (int i =w.length() -1;i>= 0;i--){
 	    board[r][c]= w.charAt(i);
 	    r--;
 	    c++;
+	}
+    }
+
+    public boolean addWord (String w){
+	Random r = new Random();
+	int num = r.nextInt(8);
+	int row = r.nextInt(20);
+	int col = r.nextInt(30);
+	try{
+	    if (num == 0){
+		addWordHforward(w,row,col);
+	    }
+	    else if (num == 1){
+		addWordHbackward(w,row,col);
+	    }
+	    else if (num == 2){
+		addWordVUp(w,row,col);
+	    }
+	    else if (num == 3){
+		addWordVdown(w,row,col);
+	    }
+	    else if (num == 4){
+		addWordForDown(w,row,col);
+	    }
+	    else if (num == 5){
+		addWordForUp(w,row,col);
+	    }
+	    else if (num == 6){
+		addWordBackDown(w,row,col);
+	    }
+	    else if (num == 7){
+		addWordBackDown(w,row,col);
+	    }
+	    return true;
+	}
+	catch (IndexOutOfBoundsException()){
+	    return false;
 	}
     }
     
