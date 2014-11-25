@@ -41,7 +41,7 @@ public class WordSearch2{
 	for (int i=0;i<w.length();i++){
 	    int x = c;
 	    if (board[r][x]!='.'){
-		throw new IndexOutOfBoundsException();
+		throw new UnsupportedOperationException();
 	    }
 	    x++;
 	}
@@ -51,23 +51,23 @@ public class WordSearch2{
 	}
     }
 
-     public void addWordHbackward (String w,int row,int col){
-	 int r=row, c=col;
-	 if ((c + w.length()) > board[1].length){
-	     c = c - ((c + w.length()) - board[1].length);
-	 }
-	 for (int i=0;i<w.length();i++){
-	     int x = c;
-	     if (board[r][x]!='.'){
-		 throw new IndexOutOfBoundsException();
-	     }
-	     x++;
-	 }
-	 for (int i=w.length()-1;i>=0;i--){
-	     board[r][c] = w.charAt(i);
-	     c++;
-	 }
-     }
+    public void addWordHbackward (String w,int row,int col){
+	int r=row, c=col;
+	if ((c + w.length()) > board[1].length){
+	    c = c - ((c + w.length()) - board[1].length);
+	}
+	for (int i=0;i<w.length();i++){
+	    int x = c;
+	    if (board[r][x]!='.'){
+		throw new UnsupportedOperationException();
+	    }
+	    x++;
+	}
+	for (int i=w.length()-1;i>=0;i--){
+	    board[r][c] = w.charAt(i);
+	    c++;
+	}
+    }
 
     public void addWordVdown (String w,int row,int col){
 	int r=row, c=col;
@@ -77,8 +77,8 @@ public class WordSearch2{
 	for (int i=0;i<w.length();i++){
 	    int x = r;
 	    if (board[x][c] != '.'){
-		throw new IndexOutOfBoundsException();
-	    }
+		throw new UnsupportedOperationException();
+  	    }
 	    x++;
 	}
 	for (int i=0;i<w.length();i++){
@@ -95,7 +95,7 @@ public class WordSearch2{
 	for (int i=0;i<w.length();i++){
 	    int x = r;
 	    if (board[x][c] != '.'){
-		throw new IndexOutOfBoundsException();
+		throw new UnsupportedOperationException();
 	    }
 	    x++;
 	}
@@ -103,6 +103,7 @@ public class WordSearch2{
 	    board[r][c]=w.charAt(i);
 	    r++;
 	}
+
     }
 
     public void addWordForDown(String w, int row, int col){
@@ -117,7 +118,7 @@ public class WordSearch2{
 	    int x = r;
 	    int y = c;
 	    if (board[x][y] != '.'){
-		throw new IndexOutOfBoundsException();
+		throw new UnsupportedOperationException();
 	    }
 	    y++;
 	    x++;
@@ -131,7 +132,7 @@ public class WordSearch2{
     
     public void addWordForUp(String w, int row, int col){
 	int r=row, c = col;
-	if ((r + w.length()) > board.length){
+	if ((r - w.length()) < 0){
 	    r = r - ((r + w.length()) - board.length);
 	}
 	if ((c + w.length()) > board[1].length){
@@ -141,7 +142,7 @@ public class WordSearch2{
 	    int x = r;
 	    int y = c;
 	    if (board[x][y] != '.'){
-		throw new IndexOutOfBoundsException();
+		throw new UnsupportedOperationException();
 	    }
 	    y++;
 	    x--;
@@ -179,8 +180,8 @@ public class WordSearch2{
     
     public void addWordBackUp(String w, int row, int col){
 	int r=row, c = col;
-	if ((r + w.length()) > board.length){
-	    r = r - ((r + w.length()) - board.length);
+	if ((r - w.length()) < 0){
+	    r = r + ((r + w.length()) - board.length);
 	}
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
@@ -189,7 +190,7 @@ public class WordSearch2{
 	    int x = r;
 	    int y = c;
 	    if (board[x][y] != '.'){
-		throw new IndexOutOfBoundsException();
+		throw new UnsupportedOperationException();
 	    }
 	    y++;
 	    x--;
@@ -233,7 +234,7 @@ public class WordSearch2{
 	    }
 	    return true;
 	}
-	catch (IndexOutOfBoundsException e){
+	catch (UnsupportedOperationException e){
 	    return false;
 	}
     }
@@ -241,47 +242,20 @@ public class WordSearch2{
    
     public static void main(String[] args){
 	WordSearch2 w = new WordSearch2();
-	System.out.println(w);
-	w.addWord("hello");	
-	w.addWord("computer");
-	w.addWord("television");
-	w.addWord("dog");
-	w.addWord("daisy");
 	/*
-	w.addWord("hello");
-	w.addWord("banana");
-	w.addWord("monkey");
+	  System.out.println(w);
+	  w.addWord("hello");	
+	  w.addWord("computer");
+	  w.addWord("television");
+	  w.addWord("dog");
+	  w.addWord("daisy");
+
+	  System.out.println(w);
 	*/
-	System.out.println(w);
-	//w.addWordVdown("Monkey",1,11);
-	//System.out.println(w);
-	//w.addWordforDown("banana",8,6);
-	//System.out.println(w);
-	/*
-	//System.out.println(w);
-        w.addWordHforward("hello",1,3); //adds word normally
-	//System.out.println(w);
-	w.addWordHforward("howdy",1,6); //overlaps with hello but moves down a row
-	//System.out.println(w);
-	w.addWordHforward("alligator",4,22); //goes off the board but moves back
-      	//System.out.println(w);
+
 	
-        w.addWordHbackward("computer",1,19); //adds word normally backward
-	//System.out.println(w);
-	w.addWordHbackward("lemon",18,27); //goes off the side of the board
-	//System.out.println(w);
-
-	w.addWordVdown("Ari",4,3); //adds word normally down
-	//System.out.println(w);
-	w.addWordVdown("monkey",2,6); //adds word overlapped
-	w.addWordVdown("elevator",17,10); //adds word but goes off edge
+	w.addWordForUp("hello",7,12);
+	w.addWordVdown("television",4,13);
 	System.out.println(w);
-
-	w.addWordVup("Jack",8,9); //adds word normally up
-	//System.out.println(w);
-	w.addWordVup("donkey",4,27); //adds word overlapped
-	w.addWordVup("door",19,12); //adds word but goes off edge
-	System.out.println(w);
-	*/
     }
 }
