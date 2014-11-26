@@ -204,7 +204,6 @@ public class WordSearch2{
 	while (n.hasNext()){
 	    list.add(n.nextLine());
 	}
-	System.out.println(list);
 	Random r = new Random();
 	int i = 0;
 	while (i<list.size()){
@@ -251,6 +250,15 @@ public class WordSearch2{
 		    list.remove(i);
 		}
 	    }
+	}
+	String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	for (int k = 0; k < board.length; k++) {
+	    for (int j = 0; j < board[i].length; j++) {
+		if (board[k][j] == '.'){
+		    int x = r.nextInt(alphabet.length());
+		    board[k][j] = alphabet.charAt(x);
+		}
+	    }	    
 	}
     }
     

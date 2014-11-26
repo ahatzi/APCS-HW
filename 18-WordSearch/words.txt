@@ -1,6 +1,9 @@
-elephant
-tiger
-chair
-television
-monkey
-Ari
+ELEPHANT
+TIGER
+CHAIR
+TELEVISION
+MONKEY
+CLASSROOM
+PRETZEL
+WINDOW
+CLOUD
