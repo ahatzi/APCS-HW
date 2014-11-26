@@ -195,45 +195,69 @@ public class WordSearch2{
 	return true;
     }
 
-    public void addWord (String w){
+    public void fillBoard (){
+	Scanner n = null;
+	try{
+	    n = new Scanner(new File("words.txt"));
+	} catch(Exception e){e.printStackTrace();}
+	ArrayList<String> list = new ArrayList<String>();
+	while (n.hasNext()){
+	    list.add(n.nextLine());
+	}
+	System.out.println(list);
 	Random r = new Random();
-	int num = r.nextInt(8);
-	int row = r.nextInt(board.length);
-	int col = r.nextInt(board[0].length);
-	if (num == 0){
-	    addWordHforward(w,row,col);
-	}
-	else if (num == 1){
-	    addWordHbackward(w,row,col);
-	}
-	else if (num == 2){
-	    addWordVup(w,row,col);
-	}
-	else if (num == 3){
-	    addWordVdown(w,row,col);
-	}
-	else if (num == 4){
-	    addWordForDown(w,row,col);
-	}
-	else if (num == 5){
-	    addWordForUp(w,row,col);
-	}
-	else if (num == 6){
-	    addWordBackDown(w,row,col);
-	}
-	else if (num == 7){
-	    addWordBackDown(w,row,col);
+	int i = 0;
+	while (i<list.size()){
+	    int num = r.nextInt(8);
+	    int row = r.nextInt(board.length);
+	    int col = r.nextInt(board[0].length);
+	    if (num == 0){
+		if (addWordHforward(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 1){
+		if (addWordHbackward(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 2){
+		if (addWordVup(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 3){
+		if (addWordVdown(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 4){
+		if (addWordForDown(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 5){
+		if (addWordForUp(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 6){
+		if (addWordBackDown(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
+	    else if (num == 7){
+		if (addWordBackDown(list.get(i),row,col)){
+		    list.remove(i);
+		}
+	    }
 	}
     }
     
    
     public static void main(String[] args){
 	WordSearch2 w = new WordSearch2();
-	w.addWord("hello");	
-	w.addWord("computer");
-	w.addWord("television");
-	w.addWord("dog");
-	w.addWord("daisy");
+	w.fillBoard();
 	System.out.println(w);
     }
 }
