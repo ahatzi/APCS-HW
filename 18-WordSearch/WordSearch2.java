@@ -33,80 +33,93 @@ public class WordSearch2{
 	return s;
     }
 
-    public void addWordHforward (String w,int row,int col){
+    public boolean doesOverlap (String w,int row,int col,int num){
+	int r = row;
+	int c = col;
+	for (int i=0;i<w.length();i++){
+	    if (board[r][c] != '.'){
+		return true;
+	    }
+	    if (num == 0){
+		c++;
+	    }
+	    else if (num == 1){
+	        r++;
+	    }
+	    else if (num == 2){
+		c++;
+		r--;
+	    }
+	    else if (num == 3){
+		c++;
+		r++;
+	    }
+	}
+	return false;
+    }
+
+
+    public boolean addWordHforward (String w,int row,int col){
 	int r=row, c=col;
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = c;
-	    if (board[r][x]!='.'){
-		throw new UnsupportedOperationException();
-	    }
-	    x++;
+	if (doesOverlap(w,r,c,0)){
+	    return false;
 	}
 	for (int i=0;i<w.length();i++){
 	    board[r][c] = w.charAt(i);
 	    c++;
 	}
+	return true;
     }
 
-    public void addWordHbackward (String w,int row,int col){
+    public boolean addWordHbackward (String w,int row,int col){
 	int r=row, c=col;
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = c;
-	    if (board[r][x]!='.'){
-		throw new UnsupportedOperationException();
-	    }
-	    x++;
+	if (doesOverlap(w,r,c,0)){
+	    return false;
 	}
 	for (int i=w.length()-1;i>=0;i--){
 	    board[r][c] = w.charAt(i);
 	    c++;
 	}
+	return true;
     }
 
-    public void addWordVdown (String w,int row,int col){
+    public boolean addWordVdown (String w,int row,int col){
 	int r=row, c=col;
 	if ((r + w.length()) > board.length){
 	    r = r - ((r + w.length()) - board.length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    if (board[x][c] != '.'){
-		throw new UnsupportedOperationException();
-  	    }
-	    x++;
+	if (doesOverlap(w,r,c,1)){
+	    return false;
 	}
 	for (int i=0;i<w.length();i++){
 	    board[r][c]=w.charAt(i);
 	    r++;
 	}
+	return true;
     }
 
-    public void addWordVup (String w,int row,int col){
+    public boolean addWordVup (String w,int row,int col){
 	int r=row, c=col;
 	if ((r + w.length()) > board.length){
 	    r = r - ((r + w.length()) - board.length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    if (board[x][c] != '.'){
-		throw new UnsupportedOperationException();
-	    }
-	    x++;
+	if (doesOverlap(w,r,c,1)){
+	    return false;
 	}
 	for (int i=w.length()-1;i>=0;i--){
 	    board[r][c]=w.charAt(i);
 	    r++;
 	}
-
+	return true;
     }
 
-    public void addWordForDown(String w, int row, int col){
+    public boolean addWordForDown(String w, int row, int col){
 	int r=row, c = col;
 	if ((r + w.length()) > board.length){
 	    r = r - ((r + w.length()) - board.length);
@@ -114,23 +127,18 @@ public class WordSearch2{
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    int y = c;
-	    if (board[x][y] != '.'){
-		throw new UnsupportedOperationException();
-	    }
-	    y++;
-	    x++;
+	if (doesOverlap(w,r,c,3)){
+	    return false;
 	}
 	for (int i =0;i<w.length();i++){
 	    board[r][c]= w.charAt(i);
 	    r++;
 	    c++;
 	}
+	return true;
     }
     
-    public void addWordForUp(String w, int row, int col){
+    public boolean addWordForUp(String w, int row, int col){
 	int r=row, c = col;
 	if ((r - w.length()) < 0){
 	    r = r - ((r + w.length()) - board.length);
@@ -138,23 +146,18 @@ public class WordSearch2{
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    int y = c;
-	    if (board[x][y] != '.'){
-		throw new UnsupportedOperationException();
-	    }
-	    y++;
-	    x--;
+	if (doesOverlap(w,r,c,2)){
+	    return false;
 	}
 	for (int i =0;i<w.length();i++){
 	    board[r][c]= w.charAt(i);
 	    r--;
 	    c++;
 	}
+	return true;
     }
 
-    public void addWordBackDown(String w, int row, int col){
+    public boolean addWordBackDown(String w, int row, int col){
 	int r=row, c = col;
 	if ((r + w.length()) > board.length){
 	    r = r - ((r + w.length()) - board.length);
@@ -162,23 +165,18 @@ public class WordSearch2{
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    int y = c;
-	    if (board[x][y] != '.'){
-		throw new UnsupportedOperationException();
-	    }
-	    y++;
-	    x++;
+       	if (doesOverlap(w,r,c,3)){
+	    return false;
 	}
 	for (int i =w.length() -1;i>= 0;i--){
 	    board[r][c]= w.charAt(i);
 	    r++;
 	    c++;
 	}
+	return true;
     }
     
-    public void addWordBackUp(String w, int row, int col){
+    public boolean addWordBackUp(String w, int row, int col){
 	int r=row, c = col;
 	if ((r - w.length()) < 0){
 	    r = r + ((r + w.length()) - board.length);
@@ -186,76 +184,56 @@ public class WordSearch2{
 	if ((c + w.length()) > board[1].length){
 	    c = c - ((c + w.length()) - board[1].length);
 	}
-	for (int i=0;i<w.length();i++){
-	    int x = r;
-	    int y = c;
-	    if (board[x][y] != '.'){
-		throw new UnsupportedOperationException();
-	    }
-	    y++;
-	    x--;
+	if (doesOverlap(w,r,c,2)){
+	    return false;
 	}
 	for (int i =w.length() -1;i>= 0;i--){
 	    board[r][c]= w.charAt(i);
 	    r--;
 	    c++;
 	}
+	return true;
     }
 
-    public boolean addWord (String w){
+    public void addWord (String w){
 	Random r = new Random();
 	int num = r.nextInt(8);
 	int row = r.nextInt(board.length);
 	int col = r.nextInt(board[0].length);
-	try{
-	    if (num == 0){
-		addWordHforward(w,row,col);
-	    }
-	    else if (num == 1){
-		addWordHbackward(w,row,col);
-	    }
-	    else if (num == 2){
-		addWordVup(w,row,col);
-	    }
-	    else if (num == 3){
-		addWordVdown(w,row,col);
-	    }
-	    else if (num == 4){
-		addWordForDown(w,row,col);
-	    }
-	    else if (num == 5){
-		addWordForUp(w,row,col);
-	    }
-	    else if (num == 6){
-		addWordBackDown(w,row,col);
-	    }
-	    else if (num == 7){
-		addWordBackDown(w,row,col);
-	    }
-	    return true;
+	if (num == 0){
+	    addWordHforward(w,row,col);
 	}
-	catch (UnsupportedOperationException e){
-	    return false;
+	else if (num == 1){
+	    addWordHbackward(w,row,col);
+	}
+	else if (num == 2){
+	    addWordVup(w,row,col);
+	}
+	else if (num == 3){
+	    addWordVdown(w,row,col);
+	}
+	else if (num == 4){
+	    addWordForDown(w,row,col);
+	}
+	else if (num == 5){
+	    addWordForUp(w,row,col);
+	}
+	else if (num == 6){
+	    addWordBackDown(w,row,col);
+	}
+	else if (num == 7){
+	    addWordBackDown(w,row,col);
 	}
     }
     
    
     public static void main(String[] args){
 	WordSearch2 w = new WordSearch2();
-	/*
-	  System.out.println(w);
-	  w.addWord("hello");	
-	  w.addWord("computer");
-	  w.addWord("television");
-	  w.addWord("dog");
-	  w.addWord("daisy");
-
-	  System.out.println(w);
-	*/
-
-	
-	w.addWordForUp("hello",7,12);
-	w.addWordVdown("television",4,13);
+	w.addWord("hello");	
+	w.addWord("computer");
+	w.addWord("television");
+	w.addWord("dog");
+	w.addWord("daisy");
 	System.out.println(w);
     }
 }
