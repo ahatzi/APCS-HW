@@ -1,5 +1,5 @@
 public class sArray{
-    private int[] data; //should be Object[]
+    private String[] data; //should be Object[]
     int items;
     
     public sArray(){
@@ -8,9 +8,9 @@ public class sArray{
 	items = 0;
     }
     
-    public boolean add(int i){ //add to end
-	if (items = data.length){
-	    int[] newdata = new int[data.length+1];
+    public boolean add(String i){ //add to end
+	if (items == data.length){
+	    String[] newdata = new String[data.length+1];
 	    for (int a = 0;a<data.length;a++){
 		newdata[a]=data[a];
 	    }
@@ -24,10 +24,10 @@ public class sArray{
 	return true;
     }
 
-    public void add(int index,int i){ //add to location index; shift everything else down
+    public void add(int index,String i){ //add to location index; shift everything else down
 	try{
-	    if (items = data.length){
-		int[] newdata = new int[data.length+1];
+	    if (items == data.length){
+		String[] newdata = new String[data.length+1];
 		for (int a = 0;a<index;a++){
 		    newdata[a]=data[a];
 		}
@@ -43,7 +43,7 @@ public class sArray{
 		}
 		data[index]=i;
 	    }
-	    items++
+	    items++;
 	}catch (Exception e){
 	    System.out.println("Error: " + e);
 	}
@@ -57,9 +57,9 @@ public class sArray{
 	}
     }
 
-    public int set(int index,int i){
+    public int set(int index,String i){
 	try{
-	    int a = data[index];
+	    String a = data[index];
 	    data[index]=i;
 	    return a;
 	}catch (IndexOutOfBoundsException e){
@@ -73,7 +73,7 @@ public class sArray{
 
     public int remove(int index){
 	try{
-	    int a = data[index];
+	    String a = data[index];
 	    data[index]=0;
 	    return a;
 	}catch (IndexOutOfBoundsException e){

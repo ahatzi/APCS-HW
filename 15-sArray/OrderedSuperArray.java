@@ -1,0 +1,16 @@
+public class OrderedSuperArray extends sArray{
+    public boolean add(String i){
+	if ((i.compareTo(data[0]) < 0)||(i.compareTo(data[0]) == 0)){
+	    add(0,i);
+	} 
+	else{
+	    for (int j=1;i<data.length;i++){
+		if ((i.compareTo(data[j]) < 0)||(i.compareTo(data[0]) == 0)){
+		    add(i,j);
+		}
+	    }
+	}
+    }
+   
+    
+}
