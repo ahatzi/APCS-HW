@@ -49,7 +49,7 @@ public class sArray{
 	}
     }
 
-    public int get(int index){
+    public String get(int index){
 	try{
 	    return data[index];
 	}catch (IndexOutOfBoundsException e){
@@ -57,7 +57,7 @@ public class sArray{
 	}
     }
 
-    public int set(int index,String i){
+    public String set(int index,String i){
 	try{
 	    String a = data[index];
 	    data[index]=i;
@@ -71,10 +71,10 @@ public class sArray{
 	return items;
     }
 
-    public int remove(int index){
+    public String remove(int index){
 	try{
 	    String a = data[index];
-	    data[index]=0;
+	    data[index]="";
 	    return a;
 	}catch (IndexOutOfBoundsException e){
 	    System.out.println("Error: " + e);
