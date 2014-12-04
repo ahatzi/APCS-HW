@@ -68,6 +68,8 @@ public class myArray {
 	return Arraystring + "}";
     }
 
+    //---------------3 different sorting methods----------------
+
     public void isort(){
 	for (int i=1;i<data.length;i++){
 	    for (int j=i;j>0;j--){
@@ -78,10 +80,10 @@ public class myArray {
 		    data[j] = shift2;
 		}
 	    }   
-	}
+	} 
     }
 
-    public void sSort(){
+    public void ssort(){
 	for (int j=0;j<data.length-1;j++){
 	    int lowestIndex = j;
 	    for (int i=j+1;i<data.length;i++){
@@ -96,9 +98,22 @@ public class myArray {
 	}
     }
 
+    public void bsort(){
+	for (int i=data.length-1;i>0;i--){
+	    for (int j=0;j<i;j++){
+		if (data[j] > data[j+1]){
+		    int swap1 = data[j];
+		    int swap2 = data[j+1];
+		    data[j] = swap2;
+		    data[j+1] = swap1;
+		}
+	    }
+	}
+    }
     
     public static void main(String[] args){
 	myArray x = new myArray();
+	//for bsort()
 	x.add(1);
 	x.add(192);
 	x.add(5);
@@ -106,8 +121,48 @@ public class myArray {
 	x.add(200);
 	x.add(98);
 	x.add(6);
+	x.add(298);
+	x.add(0);
+	x.add(87);
+	x.add(240);
+	x.add(80);
+	x.add(8);
 	System.out.println(x);
-	x.sSort();
+	x.bsort();
+	System.out.println(x);
+	//for isort()
+	x.add(1);
+	x.add(192);
+	x.add(5);
+	x.add(9);
+	x.add(200);
+	x.add(98);
+	x.add(6);
+	x.add(298);
+	x.add(0);
+	x.add(87);
+	x.add(240);
+	x.add(80);
+	x.add(8);
+	System.out.println(x);
+	x.isort();
+	System.out.println(x);
+	//for ssort()
+	x.add(1);
+	x.add(192);
+	x.add(5);
+	x.add(9);
+	x.add(200);
+	x.add(98);
+	x.add(6);
+	x.add(298);
+	x.add(0);
+	x.add(87);
+	x.add(240);
+	x.add(80);
+	x.add(8);
+	System.out.println(x);
+	x.ssort();
 	System.out.println(x);
     }
 }
