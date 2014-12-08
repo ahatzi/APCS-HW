@@ -110,7 +110,9 @@ public class myArray {
 	    }
 	}
     }
-    
+   
+    //-------------------Testing--------------------
+
     public static void main(String[] args){
 	myArray x = new myArray();
 	//for bsort()
