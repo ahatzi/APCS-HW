@@ -71,6 +71,8 @@ public class myArray {
     //---------------3 different sorting methods----------------
 
     public void isort(){
+	int comparisons = 0;
+	int assignments = 0;
 	for (int i=1;i<data.length;i++){
 	    for (int j=i;j>0;j--){
 		if (data[j] < data[j-1]){
@@ -78,27 +80,37 @@ public class myArray {
 		    int shift2 = data[j-1];
 		    data[j-1] = shift1;
 		    data[j] = shift2;
+		    assignments = assignments + 4;
 		}
 	    }   
 	} 
+	System.out.println(assignments);
     }
 
     public void ssort(){
+	int comparisons = 0;
+	int assignments = 0;
 	for (int j=0;j<data.length-1;j++){
 	    int lowestIndex = j;
+	    assignments++;
 	    for (int i=j+1;i<data.length;i++){
 		if (data[i] < data[lowestIndex]){
 		    lowestIndex = i;
+		    assignments++;
 		}
 	    }
 	    int swap1 = data[j];
 	    int swap2 = data[lowestIndex];
 	    data[j] = swap2;
 	    data[lowestIndex] = swap1;
+	    assignments = assignments + 4;
 	}
+	System.out.println(assignments);
     }
 
     public void bsort(){
+	int comparisons = 0;
+	int assignments = 0;
 	for (int i=data.length-1;i>0;i--){
 	    for (int j=0;j<i;j++){
 		if (data[j] > data[j+1]){
@@ -106,9 +118,11 @@ public class myArray {
 		    int swap2 = data[j+1];
 		    data[j] = swap2;
 		    data[j+1] = swap1;
+		    assignments = assignments + 4;
 		}
 	    }
 	}
+	System.out.println(assignments);
     }
    
     //-------------------Testing--------------------
@@ -132,39 +146,47 @@ public class myArray {
 	System.out.println(x);
 	x.bsort();
 	System.out.println(x);
+	
+	System.out.println();
+	
 	//for isort()
-	x.add(1);
-	x.add(192);
-	x.add(5);
-	x.add(9);
-	x.add(200);
-	x.add(98);
-	x.add(6);
-	x.add(298);
-	x.add(0);
-	x.add(87);
-	x.add(240);
-	x.add(80);
-	x.add(8);
-	System.out.println(x);
-	x.isort();
-	System.out.println(x);
+	myArray y = new myArray();
+	y.add(1);
+	y.add(192);
+	y.add(5);
+	y.add(9);
+	y.add(200);
+	y.add(98);
+	y.add(6);
+	y.add(298);
+	y.add(0);
+	y.add(87);
+	y.add(240);
+	y.add(80);
+	y.add(8);
+	System.out.println(y);
+	y.isort();
+	System.out.println(y);
+	
+	System.out.println();
+
 	//for ssort()
-	x.add(1);
-	x.add(192);
-	x.add(5);
-	x.add(9);
-	x.add(200);
-	x.add(98);
-	x.add(6);
-	x.add(298);
-	x.add(0);
-	x.add(87);
-	x.add(240);
-	x.add(80);
-	x.add(8);
-	System.out.println(x);
-	x.ssort();
-	System.out.println(x);
+	myArray z = new myArray();
+	z.add(1);
+	z.add(192);
+	z.add(5);
+	z.add(9);
+	z.add(200);
+	z.add(98);
+	z.add(6);
+	z.add(298);
+	z.add(0);
+	z.add(87);
+	z.add(240);
+	z.add(80);
+	z.add(8);
+	System.out.println(z);
+	z.ssort();
+	System.out.println(z);
     }
 }
