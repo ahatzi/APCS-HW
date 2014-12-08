@@ -1,6 +1,6 @@
-##Sorting
+#Sorting
 
-#Assignments
+##Assignments
 
 I created an assignments variable that increments every time a variable is
 assigned or an array position is changed. 
