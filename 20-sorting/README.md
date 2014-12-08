@@ -1,13 +1,10 @@
 ##Sorting
 
-#isort
+#Assignments
 
-This is an insertion sort
+I created an assignments variable that increments every time a variable is
+assigned or an array position is changed. 
 
-#ssort
-
-This is a selection sort
-
-#bsort
-
-This is a bubble sort
+The insertion sort and the selection sort were the exact same (I used the same
+array). However, the bubble sort had significantly less assignments (almost 
+half as much).
