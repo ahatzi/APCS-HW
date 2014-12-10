@@ -1,4 +1,4 @@
-public class Warrior extends baseChar {
+public class Warrior extends baseChar implements Comparable {
     
     public Warrior(String name) {
 	setName(name);
@@ -27,4 +27,8 @@ public class Warrior extends baseChar {
 	}
     }
 
+    public int compareTo(Object other){
+	Warrior o = (Warrior)other;
+	return (this.getName().compareTo(o.getName()));
+    }
 }

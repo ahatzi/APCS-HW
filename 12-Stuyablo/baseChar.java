@@ -10,6 +10,9 @@ public class baseChar {
     public void setName(String newName) {
 	name = newName;
     }
+    public String getName(){
+	return name;
+    }
     public String toString() {
 	return name;
     }
