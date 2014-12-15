@@ -19,7 +19,7 @@ public class Searching{
 	Arrays.sort(a);
     }
  
-    public Comparable lsearch(Comparable[] a,Comparable x){
+    public Comparable lsearch(Comparable x){
 	for (int i=0;i<a.length;i++){
 	    if (a[i].equals(x)){
 		return x;
@@ -28,8 +28,8 @@ public class Searching{
 	return null;
     }
 
-    /*
-    public Comparable bsearch(Comparable[] a,Comparable x){
+    @SuppressWarnings("unchecked")
+    public Comparable bsearch(Comparable x){
 	if (a[a.length/2].equals(x)){
 	    return x;
 	}
@@ -39,13 +39,19 @@ public class Searching{
 		    return x;
 		}
 	    }
-	    return -1;
+	    return null;
 	}
 	else {
-	    for (int i
+	    for (int i=(a.length/2)-1;i>=0;i--){
+		if (a[i].equals(x)){
+		    return x;
+		}
+	    }
+	    return null;
 	}
     }
 
+    /*
     public Comparable rbsearch(Comparable[] a,Comparable x){
 	
     }
