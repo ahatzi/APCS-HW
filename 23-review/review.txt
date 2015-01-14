@@ -1,0 +1,16 @@
+https://github.com/NicholasLYang/APCSProject
+
+File: Board.java
+lines:14-16 (method getBoard())
+Does this really return what you're looking for? Wouldn't you have to parse the entire board array and print each element? I think that returning an array might print its memory data. I would suggest making a toString method.
+
+File: Tiles.java
+lines: 7-8
+You commented about the first 4 instance variables but not the last two. I'm not 100% sure what "visible" does but I can infer that placed just means whether it has been played or not.
+
+File: Player.java
+lines: 16
+You call the method assignLetter. However, assignLetter is not written in the class and this class does not extend anything else. Where was this written and how can this class access it?
+
+
+
